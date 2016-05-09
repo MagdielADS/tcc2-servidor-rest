@@ -20,6 +20,7 @@ public class Arquivo {
     private String longitude;
     private String referenciaDeLugar;
     private boolean georreferenciado;
+    private int indexDeBusca;
 
     public Long getId() {
         return id;
@@ -102,6 +103,16 @@ public class Arquivo {
         this.georreferenciado = georreferenciado;
     }
 
+    public int getIndexDeBusca() {
+        return indexDeBusca;
+    }
+
+    public void setIndexDeBusca(int indexDeBusca) {
+        this.indexDeBusca = indexDeBusca;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Arquivo{" + "id=" + id + ", nomeDoArquivo=" + nomeDoArquivo + ", extensao=" + extensao + ", caractereDeTabulacao=" + caractereDeTabulacao + ", pathArquivo=" + pathArquivo + ", colunaDeBusca=" + colunaDeBusca + ", latitude=" + latitude + ", longitude=" + longitude + ", referenciaDeLugar=" + referenciaDeLugar + ", georreferenciado=" + georreferenciado + '}';

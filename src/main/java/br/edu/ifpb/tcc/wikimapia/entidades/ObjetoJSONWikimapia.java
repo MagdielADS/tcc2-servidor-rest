@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.tcc.model;
+package br.edu.ifpb.tcc.wikimapia.entidades;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Magdiel
  */
-public class WikimapiaJson {
+public class ObjetoJSONWikimapia {
     private List<PlaceWikiMapia> places;
 
     public List<PlaceWikiMapia> getPlaces() {

@@ -55,7 +55,8 @@ public class GerenciadorCSV {
         return retorno;
     }
     
-    public static List<String> getNomeDasColunas(File file, char caracTabulacao){
+    public static List<String> getNomeDasColunas(String caminho, char caracTabulacao){
+        File file = new File(caminho);
         List<List<String>> linhas = lerArquivo(file, caracTabulacao);
         return linhas.get(0);
     }
@@ -68,8 +69,8 @@ public class GerenciadorCSV {
         return linhas;
     }
     
-    public static boolean verificarSeColunaExiste(File file, String coluna, char caracTabulacao){
-        List<String> colunas = getNomeDasColunas(file, caracTabulacao);
+    public static boolean verificarSeColunaExiste(String caminho, String coluna, char caracTabulacao){
+        List<String> colunas = getNomeDasColunas(caminho, caracTabulacao);
         boolean result = false;
         
         return colunas.contains(coluna);

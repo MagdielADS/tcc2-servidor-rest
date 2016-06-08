@@ -5,16 +5,13 @@
  */
 package br.edu.ifpb.tcc.testes;
 
-import br.edu.ifpb.tcc.model.WikimapiaJson;
+import br.edu.ifpb.tcc.wikimapia.entidades.ObjetoJSONWikimapia;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.net.URLEncoder;
-import javax.ws.rs.core.Response;
-import static org.postgresql.jdbc2.EscapedFunctions.LOG;
 
 /**
  *
@@ -46,7 +43,7 @@ public class TesteJson {
             in.close();
             //Create gson
             Gson gson = new GsonBuilder().create();
-            WikimapiaJson r = gson.fromJson(jsonString, WikimapiaJson.class);
+            ObjetoJSONWikimapia r = gson.fromJson(jsonString, ObjetoJSONWikimapia.class);
             
             if(r != null){
                 System.out.println("JSON: "+r.toString());

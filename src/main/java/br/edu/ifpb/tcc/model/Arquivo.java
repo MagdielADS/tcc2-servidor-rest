@@ -11,14 +11,14 @@ package br.edu.ifpb.tcc.model;
  */
 public class Arquivo {
     private Long id;
-    private String nomeDoArquivo;
+    private String nomeArquivo;
     private String extensao;
-    private String caractereDeTabulacao;
+    private String caractereTabulacao;
     private String pathArquivo;
-    private String colunaDeBusca;
+    private String colunaBusca;
     private String latitude;
     private String longitude;
-    private String referenciaDeLugar;
+    private String referenciaLugar;
     private boolean georreferenciado;
     private int indexDeBusca;
 
@@ -32,11 +32,11 @@ public class Arquivo {
 
     
     public String getNomeDoArquivo() {
-        return nomeDoArquivo;
+        return nomeArquivo;
     }
 
     public void setNomeDoArquivo(String nomeDoArquivo) {
-        this.nomeDoArquivo = nomeDoArquivo;
+        this.nomeArquivo = nomeDoArquivo;
     }
 
     public String getExtensao() {
@@ -48,11 +48,11 @@ public class Arquivo {
     }
 
     public String getCaractereDeTabulacao() {
-        return caractereDeTabulacao;
+        return caractereTabulacao;
     }
 
     public void setCaractereDeTabulacao(String caractereDeTabulacao) {
-        this.caractereDeTabulacao = caractereDeTabulacao;
+        this.caractereTabulacao = caractereDeTabulacao;
     }
 
     public String getPathArquivo() {
@@ -64,11 +64,11 @@ public class Arquivo {
     }
 
     public String getColunaDeBusca() {
-        return colunaDeBusca;
+        return colunaBusca;
     }
 
     public void setColunaDeBusca(String colunaDeBusca) {
-        this.colunaDeBusca = colunaDeBusca;
+        this.colunaBusca = colunaDeBusca;
     }
 
     public String getLatitude() {
@@ -88,11 +88,11 @@ public class Arquivo {
     }
 
     public String getReferenciaDeLugar() {
-        return referenciaDeLugar;
+        return referenciaLugar;
     }
 
     public void setReferenciaDeLugar(String referenciaDeLugar) {
-        this.referenciaDeLugar = referenciaDeLugar;
+        this.referenciaLugar = referenciaDeLugar;
     }
 
     public boolean isGeorreferenciado() {
@@ -115,6 +115,6 @@ public class Arquivo {
     
     @Override
     public String toString() {
-        return "Arquivo{" + "id=" + id + ", nomeDoArquivo=" + nomeDoArquivo + ", extensao=" + extensao + ", caractereDeTabulacao=" + caractereDeTabulacao + ", pathArquivo=" + pathArquivo + ", colunaDeBusca=" + colunaDeBusca + ", latitude=" + latitude + ", longitude=" + longitude + ", referenciaDeLugar=" + referenciaDeLugar + ", georreferenciado=" + georreferenciado + '}';
+        return "Arquivo{" + "id=" + id + ", nomeDoArquivo=" + nomeArquivo + ", extensao=" + extensao + ", caractereDeTabulacao=" + caractereTabulacao + ", pathArquivo=" + pathArquivo + ", colunaDeBusca=" + colunaBusca + ", latitude=" + latitude + ", longitude=" + longitude + ", referenciaDeLugar=" + referenciaLugar + ", georreferenciado=" + georreferenciado + '}';
     }
 }

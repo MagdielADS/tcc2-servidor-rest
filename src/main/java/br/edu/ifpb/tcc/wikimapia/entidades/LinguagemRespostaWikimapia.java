@@ -9,11 +9,11 @@ package br.edu.ifpb.tcc.wikimapia.entidades;
  *
  * @author Magdiel
  */
-public enum LinguagemDeRespostaWikimapia {
+public enum LinguagemRespostaWikimapia {
     INGLES("en"), PORTUGUES("pt");
     
     public String value;
-    LinguagemDeRespostaWikimapia(String valor) {
+    LinguagemRespostaWikimapia(String valor) {
         value = valor;
     }
 }

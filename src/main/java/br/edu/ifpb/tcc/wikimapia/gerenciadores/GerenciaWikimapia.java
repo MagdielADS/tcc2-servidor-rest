@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import br.edu.ifpb.tcc.wikimapia.entidades.FormatoRespostaWikimapia;
-import br.edu.ifpb.tcc.wikimapia.entidades.LinguagemDeRespostaWikimapia;
+import br.edu.ifpb.tcc.wikimapia.entidades.LinguagemRespostaWikimapia;
 import br.edu.ifpb.tcc.wikimapia.entidades.ObjetoJSONWikimapia;
 
 /**
@@ -23,7 +23,7 @@ import br.edu.ifpb.tcc.wikimapia.entidades.ObjetoJSONWikimapia;
 public class GerenciaWikimapia {
 
     public static String montarUrlDeRequisicaoWikimapia(String query, String latitude, String longitude,
-            FormatoRespostaWikimapia formatoDeResposta, LinguagemDeRespostaWikimapia linguagemDeResposta) {
+            FormatoRespostaWikimapia formatoDeResposta, LinguagemRespostaWikimapia linguagemDeResposta) {
         StringBuilder url = new StringBuilder();
         url.append("http://api.wikimapia.org/?key=example&function=place.search&q=");
         url.append(query);

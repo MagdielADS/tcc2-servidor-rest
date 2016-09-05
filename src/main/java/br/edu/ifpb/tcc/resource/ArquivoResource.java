@@ -9,8 +9,10 @@ import br.edu.ifpb.tcc.model.Arquivo;
 import br.edu.ifpb.tcc.service.ArquivoService;
 import br.edu.ifpb.tcc.util.GerenciadorCSV;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -18,7 +20,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-
 
 
 /**
@@ -67,4 +68,22 @@ public class ArquivoResource {
         colunas = GerenciadorCSV.getNomeDasColunas(caminhoFormatado, caractere.charAt(0));
         return Response.ok().entity(colunas).build();
     }
+    
+    @POST
+    @Path("/upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public void upload(File uploadedInputStream) {
+        //arquivo ta indo pro temp, tenho que tratar uma parte de lixo que está sendo adicionada ao
+        //arquivo antes de trabalhar com ele
+        System.out.println("File ===============>>" + uploadedInputStream.toString());
+        
+        File f = new File(uploadedInputStream.toString());
+        
+        
+        for(String linha : GerenciadorCSV.getNomeDasColunas(f.getPath(), ",".charAt(0))){
+            System.out.println("LINHA "+ linha);
+        }
+        
+        System.out.println("File ===============>>"+ uploadedInputStream);
+    }   
 }

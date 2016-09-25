@@ -55,6 +55,21 @@ public class GerenciadorCSV {
         return retorno;
     }
     
+    public static List<String[]> lerArquivo(File file){
+        
+        List<String[]> linhas = new ArrayList();
+        try {
+            CSVReader reader = new CSVReader(new FileReader(file));
+            linhas = reader.readAll();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(GerenciadorCSV.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GerenciadorCSV.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return linhas;
+    }
+    
     public static List<String> getNomeDasColunas(String caminho, char caracTabulacao){
         File file = new File(caminho);
         List<List<String>> linhas = lerArquivo(file, caracTabulacao);

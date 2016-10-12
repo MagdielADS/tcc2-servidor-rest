@@ -65,20 +65,20 @@ public class ArquivoResource {
     public Response getColunasArquivo(@QueryParam("caminho") String caminho, @QueryParam("caractere") String caractere) {
         List<String> colunas = new ArrayList<>();
         
-        String c = File.separator;
-        String[] r = caminho.split("10");
-        String caminhoFormatado = "";
-        for (String s : r) {
-            caminhoFormatado += s+File.separator;
-        }
-        caminhoFormatado = caminhoFormatado.substring(0, caminhoFormatado.length()-1);
+//        String c = File.separator;
+//        String[] r = caminho.split("10");
+//        String caminhoFormatado = "";
+//        for (String s : r) {
+//            caminhoFormatado += s+File.separator;
+//        }
+//        caminhoFormatado = caminhoFormatado.substring(0, caminhoFormatado.length()-1);
         
-        colunas = GerenciadorCSV.getNomeDasColunas(caminhoFormatado, caractere.charAt(0));
+        colunas = GerenciadorCSV.getNomeDasColunas(caminho, caractere.charAt(0));
         return Response.ok().entity(colunas).build();
     }
     
     @POST
-    @Path("/upload")
+    @Path("/uploadCSV")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
     public Response upload(File uploadedInputStream) {
@@ -93,9 +93,13 @@ public class ArquivoResource {
             String line = "";
             
             while ((line = bufferedReader.readLine()) != null) {
-                buffer.append(line).append("\n");
-            }   fis.close();
+                if(GerenciadorCSV.validarLinha(line)){
+                    System.out.println("LINHA VALIDA "+line);
+                    buffer.append(line).append("\n");
+                }
+            }   
             
+            fis.close();
             bufferedReader.close();
             
             pathArquivo = DIRETORIO_UPLOAD + Math.random()+".csv";
@@ -120,4 +124,6 @@ public class ArquivoResource {
 
         return Response.ok().entity(pathArquivo).build();
     }   
+    
+    
 }

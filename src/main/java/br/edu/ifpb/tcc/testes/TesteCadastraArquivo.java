@@ -6,16 +6,9 @@
 package br.edu.ifpb.tcc.testes;
 
 import br.edu.ifpb.tcc.model.Arquivo;
-import br.edu.ifpb.tcc.model.Local;
-import br.edu.ifpb.tcc.model.Mapeamento;
-import br.edu.ifpb.tcc.model.Ponto;
-import br.edu.ifpb.tcc.model.Tabela;
-import br.edu.ifpb.tcc.persistencia.GazetteerDAO;
 import br.edu.ifpb.tcc.service.ArquivoService;
-import br.edu.ifpb.tcc.util.GerenciaLocais;
 import br.edu.ifpb.tcc.util.GerenciadorCSV;
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.tcc.wikimapia.entidades;
+package br.edu.ifpb.tcc.wikimapia;
 
 import java.math.BigDecimal;
 
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  *
  * @author Magdiel
  */
-class CoordenadaWikiMapia {
+public class CoordenadaWikimapia {
     private BigDecimal x;
     private BigDecimal y;
 

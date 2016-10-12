@@ -3,17 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.tcc.wikimapia.entidades;
+package br.edu.ifpb.tcc.wikimapia;
 
 /**
  *
  * @author Magdiel
  */
-public enum LinguagemRespostaWikimapia {
-    INGLES("en"), PORTUGUES("pt");
+public enum FormatoRespostaWikimapia {
+    
+    JSONResposta("json"),XMLResposta("xml");
     
     public String value;
-    LinguagemRespostaWikimapia(String valor) {
+    FormatoRespostaWikimapia(String valor){
         value = valor;
+    }
+    
+    public String getValue(){
+        return value;
     }
 }

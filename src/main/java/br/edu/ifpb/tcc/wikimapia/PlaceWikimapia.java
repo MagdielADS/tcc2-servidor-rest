@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.tcc.wikimapia.entidades;
+package br.edu.ifpb.tcc.wikimapia;
 
 import java.util.List;
 
@@ -11,10 +11,10 @@ import java.util.List;
  *
  * @author Magdiel
  */
-class PlaceWikiMapia {
+public class PlaceWikimapia {
     private Integer id;
     private String title;
-    private List<CoordenadaWikiMapia> polygon;
+    private List<CoordenadaWikimapia> polygon;
 
     public Integer getId() {
         return id;
@@ -32,11 +32,11 @@ class PlaceWikiMapia {
         this.title = title;
     }
 
-    public List<CoordenadaWikiMapia> getPolygon() {
+    public List<CoordenadaWikimapia> getPolygon() {
         return polygon;
     }
 
-    public void setPolygon(List<CoordenadaWikiMapia> polygon) {
+    public void setPolygon(List<CoordenadaWikimapia> polygon) {
         this.polygon = polygon;
     }
 

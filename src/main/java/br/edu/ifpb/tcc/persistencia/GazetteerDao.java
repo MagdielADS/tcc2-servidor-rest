@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  *
  * @author Magdiel Ildefonso
  */
-public class GazetteerDAO {
+public class GazetteerDao {
 
     private static Connection conn;
     static PreparedStatement pst;
@@ -52,7 +52,7 @@ public class GazetteerDAO {
             pst.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(GazetteerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GazetteerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return locais;
     }
@@ -74,7 +74,7 @@ public class GazetteerDAO {
             pst.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(GazetteerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GazetteerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return centroide;
     }
@@ -97,7 +97,7 @@ public class GazetteerDAO {
             pst.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(GazetteerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GazetteerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return p;
     }
@@ -124,7 +124,7 @@ public class GazetteerDAO {
             pst.close();
             conn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(GazetteerDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GazetteerDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("Result contem: "+result);
         return result;
@@ -144,7 +144,7 @@ public class GazetteerDAO {
 //               result = true;
 //           }
 //       } catch (SQLException ex) {
-//           Logger.getLogger(GazetteerDAO.class.getName()).log(Level.SEVERE, null, ex);
+//           Logger.getLogger(GazetteerDao.class.getName()).log(Level.SEVERE, null, ex);
 //       }
 //       return result;
 //   }
@@ -163,7 +163,7 @@ public class GazetteerDAO {
 //               result = true;
 //           }
 //       } catch (SQLException ex) {
-//           Logger.getLogger(GazetteerDAO.class.getName()).log(Level.SEVERE, null, ex);
+//           Logger.getLogger(GazetteerDao.class.getName()).log(Level.SEVERE, null, ex);
 //       }
 //       return result;
 //   }
@@ -182,7 +182,7 @@ public class GazetteerDAO {
 //               result = true;
 //           }
 //       } catch (SQLException ex) {
-//           Logger.getLogger(GazetteerDAO.class.getName()).log(Level.SEVERE, null, ex);
+//           Logger.getLogger(GazetteerDao.class.getName()).log(Level.SEVERE, null, ex);
 //       }
 //       return result;
 //   }
@@ -201,7 +201,7 @@ public class GazetteerDAO {
 //               result = true;
 //           }
 //       } catch (SQLException ex) {
-//           Logger.getLogger(GazetteerDAO.class.getName()).log(Level.SEVERE, null, ex);
+//           Logger.getLogger(GazetteerDao.class.getName()).log(Level.SEVERE, null, ex);
 //       }
 //       return result;
 //   }

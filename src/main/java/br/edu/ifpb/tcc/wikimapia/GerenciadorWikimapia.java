@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.tcc.wikimapia.gerenciadores;
+package br.edu.ifpb.tcc.wikimapia;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,15 +12,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import br.edu.ifpb.tcc.wikimapia.entidades.FormatoRespostaWikimapia;
-import br.edu.ifpb.tcc.wikimapia.entidades.LinguagemRespostaWikimapia;
-import br.edu.ifpb.tcc.wikimapia.entidades.ObjetoJSONWikimapia;
 
 /**
  *
  * @author Magdiel
  */
-public class GerenciaWikimapia {
+public class GerenciadorWikimapia {
 
     public static String montarUrlDeRequisicaoWikimapia(String query, String latitude, String longitude,
             FormatoRespostaWikimapia formatoDeResposta, LinguagemRespostaWikimapia linguagemDeResposta) {
@@ -32,9 +29,9 @@ public class GerenciaWikimapia {
         url.append("&lon=");
         url.append(longitude);
         url.append("&format=");
-        url.append(formatoDeResposta);
+        url.append(formatoDeResposta.value);
         url.append("&pack=&language=");
-        url.append(linguagemDeResposta);
+        url.append(linguagemDeResposta.value);
         url.append("&page=1&count=50&category=&categories_or=&categories_and=&distance=");
 
         return url.toString();
@@ -45,7 +42,7 @@ public class GerenciaWikimapia {
         ObjetoJSONWikimapia retorno = null;
         try {
             URL url = new URL(urlRequisicao);
-
+            
             BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
@@ -55,7 +52,6 @@ public class GerenciaWikimapia {
 
             Gson gson = new GsonBuilder().create();
             retorno = gson.fromJson(jsonString, ObjetoJSONWikimapia.class);
-
         } catch (IOException | JsonSyntaxException e) {
             e.getMessage();
         } 

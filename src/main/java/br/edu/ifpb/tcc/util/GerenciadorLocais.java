@@ -7,7 +7,7 @@ package br.edu.ifpb.tcc.util;
 
 import br.edu.ifpb.tcc.model.Local;
 import br.edu.ifpb.tcc.model.Mapeamento;
-import br.edu.ifpb.tcc.persistencia.GazetteerDAO;
+import br.edu.ifpb.tcc.persistencia.GazetteerDao;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Magdiel Ildefonso
  */
-public class GerenciaLocais {
+public class GerenciadorLocais {
 
     public static Local geometriaMaisInterna(Mapeamento m) {
         Local local = null;
@@ -165,7 +165,7 @@ public class GerenciaLocais {
         Local result = null;
 
         for (Local local : locais) {
-            if (GazetteerDAO.contem(geoMaior, local)) {
+            if (GazetteerDao.contem(geoMaior, local)) {
                 result = local;
             }
         }

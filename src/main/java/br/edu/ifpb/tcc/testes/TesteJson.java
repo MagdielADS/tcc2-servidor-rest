@@ -5,12 +5,12 @@
  */
 package br.edu.ifpb.tcc.testes;
 
-import br.edu.ifpb.tcc.wikimapia.entidades.ObjetoJSONWikimapia;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import java.io.BufferedReader;
+import br.edu.ifpb.tcc.wikimapia.FormatoRespostaWikimapia;
+import br.edu.ifpb.tcc.wikimapia.GerenciadorWikimapia;
+import br.edu.ifpb.tcc.wikimapia.LinguagemRespostaWikimapia;
+import br.edu.ifpb.tcc.wikimapia.ObjetoJSONWikimapia;
+import br.edu.ifpb.tcc.wikimapia.PlaceWikimapia;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URL;
 
 /**
@@ -31,27 +31,30 @@ public class TesteJson {
             urlTeste.append("&page=1&count=50&category=&categories_or=&categories_and=&distance=");
             URL url = new URL("http://api.wikimapia.org/?key=example&function=place.search&q=Eiffel&lat=48.858252&lon=2.29451&format=json&pack=&language=pt&page=1&count=50&category=&categories_or=&categories_and=&distance=");
             
-            System.out.println("URL: "+url.getPath()+" "+url.getHost());
+            ObjetoJSONWikimapia resposta = GerenciadorWikimapia.buscarPlacesPorQueryECoordenadas(GerenciadorWikimapia.montarUrlDeRequisicaoWikimapia(
+                    query, latitude, longitude, FormatoRespostaWikimapia.JSONResposta, LinguagemRespostaWikimapia.INGLES));
             
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(url.openStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                System.out.println("LINHA "+inputLine);
-                jsonString = inputLine;
+            for(PlaceWikimapia place : resposta.getPlaces()){
+                System.out.println("Place "+ place);
             }
-            in.close();
-            //Create gson
-            Gson gson = new GsonBuilder().create();
-            ObjetoJSONWikimapia r = gson.fromJson(jsonString, ObjetoJSONWikimapia.class);
+//            System.out.println("URL: "+url.getPath()+" "+url.getHost());
+//            
+//            BufferedReader in = new BufferedReader(
+//                    new InputStreamReader(url.openStream()));
+//            String inputLine;
+//            while ((inputLine = in.readLine()) != null) {
+//                System.out.println("LINHA "+inputLine);
+//                jsonString = inputLine;
+//            }
+//            in.close();
+//            //Create gson
+//            Gson gson = new GsonBuilder().create();
+//            ObjetoJSONWikimapia r = gson.fromJson(jsonString, ObjetoJSONWikimapia.class);
+//            
+//            if(r != null){
+//                System.out.println("JSON: "+r.toString());
+//            }
             
-            if(r != null){
-                System.out.println("JSON: "+r.toString());
-            }
-            
-        } catch (IOException e) {
-            e.getMessage();
-            e.printStackTrace();
         } catch (Exception e) {
             e.getMessage();
             e.printStackTrace();

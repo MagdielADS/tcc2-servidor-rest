@@ -103,15 +103,4 @@ public class GerenciadorCSV {
         }
         return result;
     }
-    
-    public static boolean validarLinha(String linha){
-        if(linha.equals("") || linha.equals(" ")){
-            return false;
-        }else if(linha.charAt(0) == '-' && linha.charAt(1) == '-'){
-            return false;
-        }else if(linha.contains("=") || linha.contains(":")){
-            return false;
-        }
-        return true;
-    }
 }

@@ -7,17 +7,11 @@ package br.edu.ifpb.tcc.resource;
 
 import br.edu.ifpb.tcc.model.Arquivo;
 import br.edu.ifpb.tcc.service.ArquivoService;
+import br.edu.ifpb.tcc.util.GerenciadorArquivos;
 import br.edu.ifpb.tcc.util.GerenciadorCSV;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -34,8 +28,6 @@ import javax.ws.rs.core.Response;
  */
 @Path("/georef")
 public class ArquivoResource {
-    private final String DIRETORIO_UPLOAD = "C:"+File.separator+"Users"+File.separator
-            +"Magdiel"+File.separator+"Documents"+File.separator+"arquivos-tcc"+File.separator;
     
     @GET
     @Path("/arquivos")
@@ -64,15 +56,6 @@ public class ArquivoResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getColunasArquivo(@QueryParam("caminho") String caminho, @QueryParam("caractere") String caractere) {
         List<String> colunas = new ArrayList<>();
-        
-//        String c = File.separator;
-//        String[] r = caminho.split("10");
-//        String caminhoFormatado = "";
-//        for (String s : r) {
-//            caminhoFormatado += s+File.separator;
-//        }
-//        caminhoFormatado = caminhoFormatado.substring(0, caminhoFormatado.length()-1);
-        
         colunas = GerenciadorCSV.getNomeDasColunas(caminho, caractere.charAt(0));
         return Response.ok().entity(colunas).build();
     }
@@ -81,49 +64,23 @@ public class ArquivoResource {
     @Path("/uploadCSV")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response upload(File uploadedInputStream) {
-        String pathArquivo = "";
-        
-        FileReader fis = null;
-        try {
-            File arquivoOrigem = new File(uploadedInputStream.toString());
-            fis = new FileReader(arquivoOrigem);
-            BufferedReader bufferedReader = new BufferedReader(fis);
-            StringBuilder buffer = new StringBuilder();
-            String line = "";
-            
-            while ((line = bufferedReader.readLine()) != null) {
-                if(GerenciadorCSV.validarLinha(line)){
-                    System.out.println("LINHA VALIDA "+line);
-                    buffer.append(line).append("\n");
-                }
-            }   
-            
-            fis.close();
-            bufferedReader.close();
-            
-            pathArquivo = DIRETORIO_UPLOAD + Math.random()+".csv";
-            
-            File arquivoDestino = new File(pathArquivo);
-            FileWriter writer = new FileWriter(arquivoDestino);
-            writer.write(buffer.toString());
-            writer.flush();
-            writer.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(ArquivoResource.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(ArquivoResource.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                fis.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ArquivoResource.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        return Response.ok().entity(pathArquivo).build();
-    }   
+    public Response uploadCSV(File uploadedInputStream) {
+        return Response.ok().entity(GerenciadorArquivos.copiarArquivo(uploadedInputStream.toString(), "csv")).build();
+    }    
     
+    @POST
+    @Path("/uploadXML")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response uploadXML(File uploadedInputStream) {
+        return Response.ok().entity(GerenciadorArquivos.copiarArquivo(uploadedInputStream.toString(), "xml")).build();
+    }
     
+    @POST
+    @Path("/uploadJSON")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response uploadJSON(File uploadedInputStream) {
+        return Response.ok().entity(GerenciadorArquivos.copiarArquivo(uploadedInputStream.toString(), "json")).build();
+    }
 }

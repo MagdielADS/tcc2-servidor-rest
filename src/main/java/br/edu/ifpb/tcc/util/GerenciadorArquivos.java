@@ -20,8 +20,7 @@ import java.util.logging.Logger;
  * @author Magdiel
  */
 public class GerenciadorArquivos {
-    private static final String DIRETORIO_UPLOAD = "C:"+File.separator+"Users"+File.separator
-            +"Magdiel"+File.separator+"Documents"+File.separator+"arquivos-tcc"+File.separator;
+    private static final String DIRETORIO_UPLOAD = "E:"+File.separator+"Magdiel Bruno"+File.separator+"Documents"+File.separator+"arquivos-tcc"+File.separator;
     
     public static String copiarArquivo(String path, String extensao){
         boolean retorno = true;
